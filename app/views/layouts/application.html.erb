@@ -15,6 +15,12 @@
   <% if user_signed_in? %>
     <div>
       <span>Email: <%= current_user.email %></span>
+      <span>Resources:</span>
+      <ul>
+        <li>Iron: <%= current_user.iron %></li>
+        <li>Copper: <%= current_user.copper %></li>
+        <li>Gold: <%= current_user.gold %></li>
+      </ul>
       <%= button_to(
             "Log Out",
             destroy_user_session_path,
