@@ -15,6 +15,12 @@
         Upgrade Cost:
         <%= current_user.iron_upgrade_cost %>
       </span>
+
+      <%= link_to "Upgrade",
+                  factories_level_up_path(mining_resource: "iron"),
+                  method: :post,
+                  data: { 'turbo-method' => :post }
+      %>
     </div>
     <div class="shadow-md p-3">
       <strong>COPPER</strong>

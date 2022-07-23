@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: "/sidekiq"
 
   devise_for :users
+
+  post "/factories/level_up", to: "factories#level_up"
 end

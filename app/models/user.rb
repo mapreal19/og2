@@ -75,7 +75,7 @@ class User < ApplicationRecord
   def can_upgrade_iron?
     cost = iron_upgrade_cost
 
-    iron >= cost[:iron] && copper >= cost[:copper] && gold >= cost[:gold]
+    cost.present? && iron >= cost[:iron] && copper >= cost[:copper] && gold >= cost[:gold]
   end
 
   def upgrade_iron
