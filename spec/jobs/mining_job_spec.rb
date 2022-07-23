@@ -11,7 +11,18 @@ RSpec.describe MiningJob, type: :job do
     other_user.reload
     expect(user.iron).to eq(100)
     expect(user.copper).to eq(30)
-    expect(user.gold).to eq(10.0 / 60.0)
+    expect(user.gold).to eq(20.0 / 60.0)
     expect(other_user.iron).to eq(100)
+  end
+
+  it "takes into account the level of the factory" do
+    user = create(:user, iron_level: 2, copper_level: 4, gold_level: 3)
+
+    described_class.perform_now
+
+    user.reload
+    expect(user.iron).to eq(200)
+    expect(user.copper).to eq(300)
+    expect(user.gold).to eq(40 / 60.0)
   end
 end
