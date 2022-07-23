@@ -1,9 +1,11 @@
 unless Rails.env.test?
-  scheduler = Rufus::Scheduler.new
+  Rails.configuration.after_initialize do
+    require 'rufus-scheduler'
 
-  scheduler.every '10s' do
-    MiningJob.perform_now
+    s = Rufus::Scheduler.singleton
+
+    s.every '10s' do
+      User.mine_resources
+    end
   end
-
-  scheduler.join
 end

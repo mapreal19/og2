@@ -19,7 +19,7 @@
       <ul>
         <li>Iron: <%= current_user.iron %></li>
         <li>Copper: <%= current_user.copper %></li>
-        <li>Gold: <%= current_user.gold %></li>
+        <li>Gold: <%= current_user.gold.round(2) %></li>
       </ul>
       <%= button_to(
             "Log Out",

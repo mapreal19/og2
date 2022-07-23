@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe MiningJob, type: :job do
   it "increases users resources by its factory rate per 10s" do
