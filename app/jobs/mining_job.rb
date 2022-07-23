@@ -1,10 +1,12 @@
 class MiningJob < ApplicationJob
   queue_as :default
 
-  def perform(user)
-    user.iron += 10
-    user.copper += 3
-    user.gold += 1.0 / 60.0
-    user.save!
+  def perform
+    User.find_each do |user|
+      user.iron += 100
+      user.copper += 30
+      user.gold += 10.0 / 60.0
+      user.save!
+    end
   end
 end
