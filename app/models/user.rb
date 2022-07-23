@@ -71,4 +71,23 @@ class User < ApplicationRecord
       5 => nil
     }[gold_level]
   end
+
+  def can_upgrade_iron?
+    cost = iron_upgrade_cost
+
+    iron >= cost[:iron] && copper >= cost[:copper] && gold >= cost[:gold]
+  end
+
+  def upgrade_iron
+    return unless can_upgrade_iron?
+
+    cost = iron_upgrade_cost
+
+    update!(
+      iron_level: iron_level + 1,
+      iron: iron - cost[:iron],
+      copper: copper - cost[:copper],
+      gold: gold - cost[:gold]
+    )
+  end
 end

@@ -57,4 +57,34 @@ RSpec.describe User, type: :model do
       expect(other_user.gold_rate).to eq(8 / 60.0)
     end
   end
+
+  describe "upgrade factories" do
+    describe "#upgrade_iron" do
+      it "changes level and uses resources" do
+        user = create(:user, iron: 600, copper: 200, gold: 2)
+
+        user.upgrade_iron
+
+        user.reload
+        expect(user.iron_level).to eq(2)
+        expect(user.iron).to eq(300)
+        expect(user.copper).to eq(100)
+        expect(user.gold).to eq(1)
+      end
+    end
+
+    context "when not enough resources" do
+      it "does not change level nor resources" do
+        user = create(:user, iron: 1, copper: 1, gold: 1)
+
+        user.upgrade_iron
+
+        user.reload
+        expect(user.iron_level).to eq(1)
+        expect(user.iron).to eq(1)
+        expect(user.copper).to eq(1)
+        expect(user.gold).to eq(1)
+      end
+    end
+  end
 end
