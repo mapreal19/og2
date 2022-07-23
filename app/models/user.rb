@@ -41,4 +41,34 @@ class User < ApplicationRecord
       5 => 8 / 60.0
     }[gold_level]
   end
+
+  def iron_upgrade_cost
+    {
+      1 => { iron: 300, copper: 100, gold: 1 },
+      2 => { iron: 800, copper: 250, gold: 2 },
+      3 => { iron: 1600, copper: 500, gold: 4 },
+      4 => { iron: 3000, copper: 1000, gold: 8 },
+      5 => nil
+    }[iron_level]
+  end
+
+  def copper_upgrade_cost
+    {
+      1 => { iron: 200, copper: 70 },
+      2 => { iron: 400, copper: 150 },
+      3 => { iron: 800, copper: 300 },
+      4 => { iron: 1600, copper: 600 },
+      5 => nil
+    }[copper_level]
+  end
+
+  def gold_upgrade_cost
+    {
+      1 => { copper: 100, gold: 2 },
+      2 => { copper: 200, gold: 4 },
+      3 => { copper: 400, gold: 8 },
+      4 => { copper: 800, gold: 16 },
+      5 => nil
+    }[gold_level]
+  end
 end

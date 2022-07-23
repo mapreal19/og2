@@ -11,18 +11,30 @@
 
       <span>Level: <%= current_user.iron_level %> -</span>
       <span>Production Rate: <%= current_user.iron_rate %>/s</span>
+      <span>
+        Upgrade Cost:
+        <%= current_user.iron_upgrade_cost %>
+      </span>
     </div>
     <div class="shadow-md p-3">
       <strong>COPPER</strong>
 
       <span>Level: <%= current_user.copper_level %> -</span>
       <span>Production Rate: <%= current_user.copper_rate %>/s</span>
+      <span>
+        Upgrade Cost:
+        <%= current_user.copper_upgrade_cost %>
+      </span>
     </div>
     <div class="shadow-md p-3">
       <strong>GOLD</strong>
 
       <span>Level: <%= current_user.gold_level %> -</span>
       <span>Production Rate: <%= current_user.gold_rate.round(2) %>/s</span>
+      <span>
+        Upgrade Cost:
+        <%= current_user.gold_upgrade_cost %>
+      </span>
     </div>
   </div>
 <% end %>
