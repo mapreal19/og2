@@ -27,4 +27,34 @@ RSpec.describe User, type: :model do
 
     expect(user.errors.full_messages).to include("Iron level must be in 1..5")
   end
+
+  describe "#iron_rate" do
+    it "returns rate depending on the level" do
+      user = create(:user)
+      other_user = create(:user, iron_level: 3)
+
+      expect(user.iron_rate).to eq(10)
+      expect(other_user.iron_rate).to eq(40)
+    end
+  end
+
+  describe "#copper_rate" do
+    it "returns rate depending on the level" do
+      user = create(:user)
+      other_user = create(:user, copper_level: 4)
+
+      expect(user.copper_rate).to eq(3)
+      expect(other_user.copper_rate).to eq(30)
+    end
+  end
+
+  describe "#gold_rate" do
+    it "returns rate depending on the level" do
+      user = create(:user)
+      other_user = create(:user, gold_level: 5)
+
+      expect(user.gold_rate).to eq(2 / 60.0)
+      expect(other_user.gold_rate).to eq(8 / 60.0)
+    end
+  end
 end
