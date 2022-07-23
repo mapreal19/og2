@@ -26,6 +26,7 @@ module Og2
     config.load_defaults 7.0
 
     config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_name_prefix = "og2_#{Rails.env}"
 
     # Configuration for the application, engines, and railties goes here.
     #

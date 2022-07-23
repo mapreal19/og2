@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
 
+  require "sidekiq/web"
+  mount Sidekiq::Web, at: "/sidekiq"
+
   devise_for :users
 end
