@@ -1,1 +1,22 @@
-Home Page
+<div class="container mx-auto mt-10 px-5 flex">Home Page</div>
+
+<% if user_signed_in? %>
+  <div class="container mx-auto mt-28 px-5 flex">
+    <h1>Factories</h1>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4 px-5 mt-10">
+    <div class="shadow-md p-3">
+      <strong>IRON</strong>
+
+      <span>Level: 1 -</span>
+      <span>Production Rate: 10/s</span>
+    </div>
+    <div>
+      <strong>COPPER</strong>
+    </div>
+    <div>
+      <strong>GOLD</strong>
+    </div>
+  </div>
+<% end %>
